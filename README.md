@@ -1,7 +1,7 @@
 
 # 📚 Digital Bookstore Management System
 
-A **full-stack microservices-based application** that allows users to browse, purchase, and manage books online. Built with **React + Vite** for the frontend and **Spring Boot** for the backend, using **REST APIs** and **MySQL** for data persistence.
+A **Full-Stack Microservices-Based Application** that allows users to browse, purchase, and manage books online. Built with **React + Vite** for the frontend and **Spring Boot** for the backend, using **REST APIs** and **MySQL** for data persistence.
 
 ---
 
@@ -34,7 +34,6 @@ A **full-stack microservices-based application** that allows users to browse, pu
 - **Backend:** Spring Boot (Microservices)
 - **API Style:** REST
 - **Database:** MySQL
-- **Deployment:** Docker-based containerized setup for staging and production.
 
 ---
 
@@ -63,14 +62,8 @@ digital-bookstore/
 ---
 
 ## 🔐 Security
-- Secure login with JWT authentication.
+- Secure login and role-based access control using **Spring Security**.
 - Encrypted transactions for payment integration.
-
----
-
-## 📈 Scalability & Performance
-- Designed to handle **500+ concurrent users**.
-- Easily scalable for multi-store support in future iterations.
 
 ---
 
@@ -99,3 +92,4 @@ mvn spring-boot:run
 ## ✅ Future Enhancements
 - Multi-store support.
 - Advanced recommendation engine.
+- Payment gateway integration.
