@@ -1,12 +1,102 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📚 Digital Bookstore Management System
 
-Currently, two official plugins are available:
+A **full-stack microservices-based application** that allows users to browse, purchase, and manage books online. Built with **React + Vite** for the frontend and **Spring Boot** for the backend, using **REST APIs** and **MySQL** for data persistence.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### **Book Catalog Management**
+- Browse, search, and filter books by category or author.
+- Admins can add, update, and remove books.
+
+### **User Management**
+- User registration, login, and profile management.
+- Role-based access (Admin / Customer).
+
+### **Order Management**
+- Add books to cart and place orders.
+- Track order status (Pending, Shipped, Delivered).
+
+### **Inventory Management**
+- Track stock levels and prevent out-of-stock purchases.
+- Alerts for low stock.
+
+### **Review & Rating**
+- Customers can submit reviews and ratings.
+- Admin moderation for reviews.
+
+---
+
+## 🏗️ Architecture
+- **Frontend:** React + Vite
+- **Backend:** Spring Boot (Microservices)
+- **API Style:** REST
+- **Database:** MySQL
+- **Deployment:** Docker-based containerized setup for staging and production.
+
+---
+
+## 📂 Project Structure
+```
+digital-bookstore/
+├── frontend/        # React + Vite application
+├── backend/
+│   ├── book-service/
+│   ├── user-service/
+│   ├── order-service/
+│   ├── inventory-service/
+│   └── review-service/
+└── README.md
+```
+
+---
+
+## ⚙️ Tech Stack
+- **Frontend:** React, Vite, Axios
+- **Backend:** Spring Boot, Spring Data JPA, Feign Client
+- **Database:** MySQL
+- **Authentication:** JWT-based authentication
+- **Containerization:** Docker
+- **Build Tools:** Maven
+
+---
+
+## 🔐 Security
+- Secure login with JWT authentication.
+- Encrypted transactions for payment integration.
+
+---
+
+## 📈 Scalability & Performance
+- Designed to handle **500+ concurrent users**.
+- Easily scalable for multi-store support in future iterations.
+
+---
+
+## ▶️ How to Run
+
+### **Frontend**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### **Backend**
+```bash
+cd backend
+mvn clean install
+mvn spring-boot:run
+```
+
+### **Database**
+- Create a MySQL database named `bookstore_db`.
+- Update `application.properties` with your DB credentials.
+
+---
+
+## ✅ Future Enhancements
+- Multi-store support.
+- Advanced recommendation engine.
