@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test User Management Integration</title>
+</head>
+<body>
+    <h1>Test User Management Microservice</h1>
+    
+    <h2>User Signup</h2>
+    <button onclick="testUserSignup()">Test User Signup</button>
+    <div id="userSignupResult"></div>
+    
+    <h2>Admin Signup</h2>
+    <button onclick="testAdminSignup()">Test Admin Signup</button>
+    <div id="adminSignupResult"></div>
+    
+    <h2>User Login</h2>
+    <button onclick="testUserLogin()">Test User Login</button>
+    <div id="userLoginResult"></div>
+    
+    <h2>Admin Login</h2>
+    <button onclick="testAdminLogin()">Test Admin Login</button>
+    <div id="adminLoginResult"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+        
+        async function testUserSignup() {
+            try {
+                const response = await fetch(`${API_BASE}/user/signup`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fullName: 'Test User',
+                        email: 'testuser@example.com',
+                        password: 'TestPass@123',
+                        phoneNumber: null
+                    }),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                document.getElementById('userSignupResult').innerHTML = 
+                    `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('userSignupResult').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+        
+        async function testAdminSignup() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/signup`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fullName: 'Test Admin',
+                        email: 'testadmin@example.com',
+                        password: 'AdminPass@123',
+                        phoneNumber: '1234567890'
+                    }),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                document.getElementById('adminSignupResult').innerHTML = 
+                    `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('adminSignupResult').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+        
+        async function testUserLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/user/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'testuser@example.com',
+                        password: 'TestPass@123'
+                    }),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                document.getElementById('userLoginResult').innerHTML = 
+                    `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('userLoginResult').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+        
+        async function testAdminLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'testadmin@example.com',
+                        password: 'AdminPass@123'
+                    }),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                document.getElementById('adminLoginResult').innerHTML = 
+                    `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('adminLoginResult').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

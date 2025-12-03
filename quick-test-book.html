@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Book Creation Test</title>
+</head>
+<body>
+    <h1>Quick Book Creation Test</h1>
+    <button onclick="createBook()">Create Test Book</button>
+    <div id="result"></div>
+    
+    <script>
+        async function createBook() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Creating book...';
+            
+            const bookData = {
+                name: "Test Book " + Date.now(),
+                author: "Test Author",
+                price: 29.99,
+                genre: "Fiction",
+                description: "A test book",
+                image: "test.jpg",
+                stock_id: 10  // This is the quantity from frontend
+            };
+            
+            try {
+                const startTime = Date.now();                const response = await fetch('http://localhost:9092/books/addbook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(bookData)
+                });
+                
+                const endTime = Date.now();
+                const responseTime = endTime - startTime;
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.innerHTML = `
+                        <h3>✅ Book Created Successfully!</h3>
+                        <p><strong>Response Time:</strong> ${responseTime}ms</p>
+                        <p><strong>Book ID:</strong> ${result.id}</p>
+                        <p><strong>Name:</strong> ${result.name}</p>
+                        <p><strong>Stock ID (Inventory Table ID):</strong> ${result.stock_id}</p>
+                        <pre>${JSON.stringify(result, null, 2)}</pre>
+                    `;
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `
+                        <h3>❌ Error (${response.status})</h3>
+                        <p><strong>Response Time:</strong> ${responseTime}ms</p>
+                        <p>${error}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3>❌ Network Error</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

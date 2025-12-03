@@ -1,0 +1,29 @@
+### Add inventory for book ID 1
+POST http://localhost:9092/inventory/add
+Content-Type: application/json
+
+{
+  "bookId": 1,
+  "quantity": 100
+}
+
+### Add inventory for book ID 2
+POST http://localhost:9092/inventory/add
+Content-Type: application/json
+
+{
+  "bookId": 2,
+  "quantity": 100
+}
+
+### Add inventory for book ID 3
+POST http://localhost:9092/inventory/add
+Content-Type: application/json
+
+{
+  "bookId": 3,
+  "quantity": 100
+}
+
+### Check inventory for book ID 1
+GET http://localhost:9092/inventory/check/1
