@@ -54,11 +54,10 @@ digital-bookstore/
 ---
 
 ## ⚙️ Tech Stack
-- **Frontend:** React, Vite, Axios
+- **Frontend:** React, Vite
 - **Backend:** Spring Boot, Spring Data JPA, Feign Client
 - **Database:** MySQL
-- **Authentication:** JWT-based authentication
-- **Containerization:** Docker
+- **Authentication:** Spring Security
 - **Build Tools:** Maven
 
 ---
